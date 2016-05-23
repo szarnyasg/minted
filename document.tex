@@ -1,0 +1,31 @@
+% !TeX encoding = UTF-8
+% use ONE of these
+% !TeX program = xelatex -shell-escape -8bit %.tex
+% !TeX program = pdflatex -shell-escape %.tex
+\documentclass[a4paper]{article}
+
+\usepackage{ifxetex}
+\ifxetex
+    \usepackage{fontspec}
+\else
+    \usepackage[T1]{fontenc}
+    \usepackage[utf8]{inputenc}
+\fi
+
+\usepackage{minted}
+
+\begin{document}
+    \begin{minted}{prolog}
+    mother_child(trude, sally).
+
+    father_child(tom, sally).
+    father_child(tom, erica).
+    father_child(mike, tom).
+
+    sibling(X, Y)      :- parent_child(Z, X), parent_child(Z, Y).
+
+    parent_child(X, Y) :- father_child(X, Y).
+    parent_child(X, Y) :- mother_child(X, Y).
+    \end{minted}
+\end{document}
+
